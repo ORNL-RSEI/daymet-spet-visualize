@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Head from "next/head";
-import GetData from "../components/GetData";
+import { fetchDaymet } from "../functions/fetchDaymet";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 
@@ -9,15 +9,14 @@ export default function Home() {
   const lon1 = -84.2916;
   const [enteredLat, setEnteredLat] = useState("");
   const [enteredLon, setEnteredLon] = useState("");
+  const [daymetData, setDaymetData] = useState(null);
+
+  const text =
+    daymetData === null ? "Loading..." : daymetData.data["tmax (deg c)"][0];
 
   function sendRequest(event) {
     event.preventDefault();
-    const data = {
-      enteredLat,
-      enteredLon,
-    };
-    const GetData({ data });
-    console.log(data);
+    fetchDaymet({ lat: enteredLat, lon: enteredLon, setDaymetData });
   }
 
   return (
@@ -49,6 +48,11 @@ export default function Home() {
           />
           <button type="submit">Get Temperature</button>
         </form>
+
+        <>
+          <h3>The tmax is:</h3>
+          <h3>{text}</h3>
+        </>
       </main>
       <footer className={styles.footer}>
         <h4 className="title">
