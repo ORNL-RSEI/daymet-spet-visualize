@@ -1,11 +1,24 @@
+import { useState } from "react";
 import Head from "next/head";
 import GetData from "../components/GetData";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 
 export default function Home() {
-  const lat = 35.9621;
-  const lon = -84.2916;
+  const lat1 = 35.9621;
+  const lon1 = -84.2916;
+  const [enteredLat, setEnteredLat] = useState("");
+  const [enteredLon, setEnteredLon] = useState("");
+
+  function sendRequest(event) {
+    event.preventDefault();
+    const data = {
+      enteredLat,
+      enteredLon,
+    };
+    GetData({ enteredLat, enteredLon });
+    console.log(data);
+  }
 
   return (
     <div className={styles.container}>
@@ -16,7 +29,26 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <GetData lat={lat} lon={lon} />
+        {/* <GetData lat={enteredLat} lon={enteredLon} /> */}
+        <form onSubmit={sendRequest} className={styles.form}>
+          <label htmlFor="lat">Latitude</label>
+          <input
+            id="lat"
+            type="text"
+            required
+            value={enteredLat}
+            onChange={(event) => setEnteredLat(event.target.value)}
+          />
+          <label htmlFor="lon">Longitude</label>
+          <input
+            id="lon"
+            type="lon"
+            required
+            value={enteredLon}
+            onChange={(event) => setEnteredLon(event.target.value)}
+          />
+          <button type="submit">Get Temperature</button>
+        </form>
       </main>
       <footer className={styles.footer}>
         <h4 className="title">
