@@ -16,7 +16,7 @@ export default function Home() {
       enteredLat,
       enteredLon,
     };
-    GetData({ enteredLat, enteredLon });
+    const GetData({ data });
     console.log(data);
   }
 
