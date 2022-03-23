@@ -43,12 +43,17 @@ export default function Home() {
           crossorigin=""
         ></script>
       </Head>
+      <header className={styles.header}>
+        <h1 className="title">
+          <a>Daymet SPET Visualization</a>
+        </h1>
+      </header>
 
       <main className={styles.main}>
         {/* <GetData lat={enteredLat} lon={enteredLon} /> */}
         <form onSubmit={sendRequest} className={styles.form}>
           <div>
-            <div>
+            <div id="form">
               <label htmlFor="lat">Latitude</label>
               <input
                 id="lat"
@@ -57,18 +62,21 @@ export default function Home() {
                 value={enteredLat}
                 onChange={(event) => setEnteredLat(event.target.value)}
               />
-
-              <div>
-                <label htmlFor="lon">Longitude</label>
-                <input
-                  id="lon"
-                  type="lon"
-                  required
-                  value={enteredLon}
-                  onChange={(event) => setEnteredLon(event.target.value)}
-                />
-              </div>
-              <button type="submit">Get Temperature</button>
+              <br></br>
+              <br></br>
+              <label htmlFor="lon">Longitude</label>
+              <input
+                id="lon"
+                type="lon"
+                required
+                value={enteredLon}
+                onChange={(event) => setEnteredLon(event.target.value)}
+              />
+              <br></br>
+              <br></br>
+              <button id="button1" type="submit">
+                Get Temperature
+              </button>
             </div>
             <div id="map">
               <Map />
