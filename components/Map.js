@@ -5,6 +5,10 @@ import "leaflet-defaulticon-compatibility";
 
 //mapboxgl.accessToken =
 //  "pk.eyJ1IjoiYW51c3VyZXNoIiwiYSI6ImNsMTNwdjRwcDNocHkzZG9wY3FuaXc2c3MifQ.iN_XeILmG8wdyLYxTc7erw";
+//MAPBOX_ACCESS_TOKEN =
+//  "pk.eyJ1IjoiYW51c3VyZXNoIiwiYSI6ImNsMTNwdjRwcDNocHkzZG9wY3FuaXc2c3MifQ.iN_XeILmG8wdyLYxTc7erw";
+//daymet_mapbox_access_token =
+//  "pk.eyJ1IjoiYW51c3VyZXNoIiwiYSI6ImNsMWF2cHc4cDAxdW8zYnBiZmd2YmtucjgifQ.hyU0gtO-jXskt1_vmfL-GA";
 const Map = () => {
   return (
     <MapContainer
