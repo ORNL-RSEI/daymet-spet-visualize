@@ -3,12 +3,16 @@ import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
 
-//mapboxgl.accessToken =
-//  "pk.eyJ1IjoiYW51c3VyZXNoIiwiYSI6ImNsMTNwdjRwcDNocHkzZG9wY3FuaXc2c3MifQ.iN_XeILmG8wdyLYxTc7erw";
+/**Below is Default public token created using a private account */
 //MAPBOX_ACCESS_TOKEN =
 //  "pk.eyJ1IjoiYW51c3VyZXNoIiwiYSI6ImNsMTNwdjRwcDNocHkzZG9wY3FuaXc2c3MifQ.iN_XeILmG8wdyLYxTc7erw";
+/**Below is token created using a private account with name Daymet*/
 //daymet_mapbox_access_token =
 //  "pk.eyJ1IjoiYW51c3VyZXNoIiwiYSI6ImNsMWF2cHc4cDAxdW8zYnBiZmd2YmtucjgifQ.hyU0gtO-jXskt1_vmfL-GA";
+/* below token from mapbox website */
+const MAPBOX_ACCESS_TOKEN =
+  "pk.eyJ1IjoiYW51c3VyZXNoIiwiYSI6ImNsMWRzcm5ndjBiMWgzYmxmbGttY3IwaWwifQ.WAo10c8TQAmrdUjUIcQ5Wg";
+
 const Map = () => {
   return (
     <MapContainer
@@ -18,8 +22,7 @@ const Map = () => {
       style={{ height: "100%", width: "100%" }}
     >
       <TileLayer
-        url={`https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`}
-        //url={"https://api.mapbox.com/v4/mapbox.satellite/1/0/0@2x.jpg90?access_token=YOUR_MAPBOX_ACCESS_TOKEN"}
+        url={`//{s}.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}`}
       />
       <Marker position={[40.8054, -74.0241]} draggable={true} nimate={true}>
         <Popup>Hey ! you found me</Popup>
