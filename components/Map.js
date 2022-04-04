@@ -9,6 +9,14 @@ import "leaflet-defaulticon-compatibility";
 /**Below is token created using a private account with name Daymet*/
 //daymet_mapbox_access_token =
 //  "pk.eyJ1IjoiYW51c3VyZXNoIiwiYSI6ImNsMWF2cHc4cDAxdW8zYnBiZmd2YmtucjgifQ.hyU0gtO-jXskt1_vmfL-GA";
+
+//  Below is a public access TOKEN that works with command click
+//https://api.mapbox.com/v4/mapbox.satellite/page.html?access_token=pk.eyJ1IjoiYW51c3VyZXNoIiwiYSI6ImNsMWRzcm5ndjBiMWgzYmxmbGttY3IwaWwifQ.WAo10c8TQAmrdUjUIcQ5Wg#3/-0.18/0.09
+
+// From Forest Carter
+// https://api.mapbox.com/styles/v1/mapbox/streets-v9/tiles/{z}/{x}/{y}?access_token=pk[…]ImNsMWRzcm5ndjBiMWgzYmxmbGttY3IwaWwifQ.WAo10c8TQAmrdUjUIcQ5Wg
+//url={`https://api.mapbox.com/styles/v1/mapbox/streets-v9/tiles/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_TOKEN}`}
+
 /* below token from mapbox website */
 const MAPBOX_ACCESS_TOKEN =
   "pk.eyJ1IjoiYW51c3VyZXNoIiwiYSI6ImNsMWRzcm5ndjBiMWgzYmxmbGttY3IwaWwifQ.WAo10c8TQAmrdUjUIcQ5Wg";
@@ -22,7 +30,7 @@ const Map = () => {
       style={{ height: "100%", width: "100%" }}
     >
       <TileLayer
-        url={`//{s}.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}`}
+        url={`https://api.mapbox.com/styles/v1/mapbox/streets-v9/tiles/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_TOKEN}`}
       />
       <Marker position={[40.8054, -74.0241]} draggable={true} nimate={true}>
         <Popup>Hey ! you found me</Popup>
