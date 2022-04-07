@@ -3,7 +3,6 @@ import Head from "next/head";
 import { fetchDaymet } from "../functions/fetchDaymet";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
-//import Map from "../components/Map";
 import dynamic from "next/dynamic";
 
 const MAPBOX_ACCESS_TOKEN =
