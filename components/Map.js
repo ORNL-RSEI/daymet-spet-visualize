@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { fetchDaymet } from "../functions/fetchDaymet";
 import {
   MapContainer,
   TileLayer,
@@ -13,13 +14,24 @@ import "leaflet-defaulticon-compatibility";
 import { map } from "leaflet";
 import { marker } from "leaflet";
 
-const latlng = [35.9621, -84.2916];
+//const text =
+//  daymetData === null ? "Loading..." : daymetData.data["tmax (deg c)"][0];
+
+/* Below is Lat & Lng for Knoxville area */
+//const latlng = [35.9621, -84.2916];
+const latlng = [39.699423, -96.199808];
+
 /* below token from mapbox website */
 const MAPBOX_ACCESS_TOKEN =
   "pk.eyJ1IjoiYW51c3VyZXNoIiwiYSI6ImNsMWRzcm5ndjBiMWgzYmxmbGttY3IwaWwifQ.WAo10c8TQAmrdUjUIcQ5Wg";
 
 const GetCoordinates = () => {
   const map = useMap();
+  const [enteredLat, setEnteredLat] = useState("");
+  const [enteredLon, setEnteredLon] = useState("");
+  const [daymetData, setDaymetData] = useState(null);
+  const text =
+    daymetData === null ? "Loading..." : daymetData.data["tmax (deg c)"][0];
 
   useEffect(() => {
     if (!map) return;
@@ -38,6 +50,13 @@ const GetCoordinates = () => {
 
     map.on("click", (e) => {
       info.textContent = e.latlng;
+      console.log("Lat", e.latlng.lat, "Lng", e.latlng.lng);
+      enteredLat = e.latlng.lat;
+      enteredLon = e.latlng.lng;
+      setEnteredLat(e.latlng.lat);
+      setEnteredLon(e.latlng.lng);
+      fetchDaymet({ lat: enteredLat, lon: enteredLon, setDaymetData });
+      console.log("Retrieved Data", text);
     });
 
     map.addControl(new positon());
@@ -50,7 +69,7 @@ const Map = () => {
   return (
     <MapContainer
       center={latlng} // Center the map to marker location
-      zoom={14}
+      zoom={4}
       scrollWheelZoom={false}
       style={{ height: "100%", width: "100%" }}
     >
