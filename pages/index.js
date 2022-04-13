@@ -73,7 +73,13 @@ export default function Home() {
               </button>
             </div>
             <div id="map">
-              <Map />
+              <Map
+                enteredLat={enteredLat}
+                enteredLon={enteredLon}
+                setEnteredLat={setEnteredLat}
+                setEnteredLon={setEnteredLon}
+                setDaymetData={setDaymetData}
+              />
             </div>
           </div>
         </form>
