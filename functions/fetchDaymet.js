@@ -1,8 +1,7 @@
 export const fetchDaymet = async (props) => {
-  const { lat, lon, setDaymetData } = props;
-  console.log("fetchlat", { lat }, "fetchlon", { lon });
+  const { coordinates, setDaymetData, startDate } = props;
   const rawData = await fetch(
-    `https://daymet.ornl.gov/single-pixel/api/data?lat=${lat}&lon=${lon}&vars=dayl,prcp,srad,swe,tmax,tmin,vp&start=1990-01-01&end=1990-01-01&format=json`
+    `https://daymet.ornl.gov/single-pixel/api/data?lat=${coordinates.lat}&lon=${coordinates.lng}&vars=dayl,prcp,srad,swe,tmax,tmin,vp&start=${startDate}&end=1991-01-01&format=json`
   );
   const formattedData = await rawData.json();
   console.log("formattedData", { formattedData });
