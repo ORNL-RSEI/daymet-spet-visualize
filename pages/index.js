@@ -50,7 +50,6 @@ export default function Document() {
           coordinates={coordinates}
           setCoordinates={setCoordinates}
         />
-
         <>
           <h3>{`The ${climateVariable} is`}</h3>
           <h3>{text}</h3>
