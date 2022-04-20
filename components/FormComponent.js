@@ -22,6 +22,8 @@ export const FormComponent = (props) => {
     <form onSubmit={onSubmit} className={styles.form}>
       <div id="form">
         <label htmlFor="lat">Latitude</label>
+        <br></br>
+
         <input
           id="lat"
           name="lat"
@@ -33,8 +35,11 @@ export const FormComponent = (props) => {
           required
         />
         <br></br>
+        <br></br>
 
         <label htmlFor="lng">Longitude</label>
+        <br></br>
+
         <input
           id="lng"
           name="lng"
@@ -46,8 +51,10 @@ export const FormComponent = (props) => {
           required
         />
         <br></br>
+        <br></br>
 
         <label htmlFor="climateVariable">Climate Variable</label>
+        <br></br>
 
         <select
           id="climateVariable"
@@ -57,14 +64,20 @@ export const FormComponent = (props) => {
             props.setClimateVariable(e.target.value);
           }}
         >
-          <option value="dayl (s)">dayl</option>
-          <option value="prcp (mm/day)">prcp</option>
-          <option value="srad (W/m^2)">srad</option>
+          <option value="dayl (s)">Duration of the Daylight </option>
+          <option value="prcp (mm/day)">Daily Total Precipitation</option>
+          <option value="srad (W/m^2)">Shortwave Radiation Flux Density</option>
+          <option value="swe (kg/m^2)">Snow Water Equivalent</option>
+          <option value="tmax (deg c)">Daily Maximum Air Temperature</option>
+          <option value="tmin (deg c)">Daily Minimum Air Temperature</option>
+          <option value="vp (Pa)">Water Vapor Pressure</option>
         </select>
 
         <br></br>
+        <br></br>
 
         <label htmlFor="start">Start date:</label>
+        <br></br>
 
         <input
           type="date"
@@ -76,12 +89,28 @@ export const FormComponent = (props) => {
             props.setStartDate(e.target.value);
           }}
         ></input>
+        <br></br>
+
+        <br></br>
+        <label htmlFor="end">End date:</label>
+        <br></br>
+
+        <input
+          type="date"
+          name="endDate"
+          min="1990-01-01"
+          max="2000-01-01"
+          value={props.endDate}
+          onChange={(e) => {
+            props.setEndDate(e.target.value);
+          }}
+        ></input>
 
         <br></br>
         <br></br>
 
         <button id="button1" type="submit">
-          Get Temperature
+          Get Weather Info
         </button>
       </div>
     </form>

@@ -14,7 +14,7 @@ export default function Document() {
   const [daymetData, setDaymetData] = useState(null);
   const [climateVariable, setClimateVariable] = useState("dayl (s)");
   const [startDate, setStartDate] = useState("1990-01-01");
-  const [endDate, setEndDate] = useState(null);
+  const [endDate, setEndDate] = useState("1990-01-02");
 
   useEffect(() => {
     if (coordinates.lat === null || coordinates.lng === null) return;
@@ -22,12 +22,23 @@ export default function Document() {
       coordinates,
       setDaymetData,
       startDate,
+      endDate,
     });
-  }, [coordinates, startDate]);
+  }, [coordinates, startDate, endDate]);
 
   const text =
-    daymetData === null ? "Loading..." : daymetData.data[climateVariable][0];
+    //daymetData === null ? "Loading..." : daymetData.data[climateVariable][0];
+    daymetData === null
+      ? "Loading"
+      : avgClimate(daymetData.data[climateVariable]);
 
+  function avgClimate(array) {
+    var weather = 0;
+    for (var i = 0; i < array.length; i++) {
+      weather = weather + array[i];
+    }
+    return weather / array.length;
+  }
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -44,12 +55,15 @@ export default function Document() {
           setClimateVariable={setClimateVariable}
           startDate={startDate}
           setStartDate={setStartDate}
+          endDate={endDate}
+          setEndDate={setEndDate}
         />
 
         <MapComponent
           coordinates={coordinates}
           setCoordinates={setCoordinates}
         />
+
         <>
           <h3>{`The ${climateVariable} is`}</h3>
           <h3>{text}</h3>

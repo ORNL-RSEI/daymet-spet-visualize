@@ -15,17 +15,17 @@ a {
   box-sizing: border-box;
 }
 #map {
-  width: 700px;
-  height: 550px;
+  width: 650px;
+  height: 500px;
   float: left;
-  margin-left: 200px;
+  margin-left: 320px;
 }
 #form {
-  width: 100px;
+  width: 350px;
   height: 200px;
   float: left;
   border-width: 5pt;
-  margin: 20px;
+  margin: 10px;
 }
 #button1 {
   background-color: #180861; /* Green */
