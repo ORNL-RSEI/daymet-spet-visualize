@@ -4,6 +4,7 @@ import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { FormComponent } from "../components/FormComponent";
+import { LineChart } from "../components/LineChart";
 
 const MapComponent = dynamic(() => import("../components/MapComponent"), {
   ssr: false,
@@ -31,6 +32,17 @@ export default function Document() {
     daymetData === null
       ? "Loading"
       : avgClimate(daymetData.data[climateVariable]);
+
+  const climateText =
+    //daymetData === null ? "Loading..." : daymetData.data[climateVariable][0];
+    daymetData === null ? "Loading" : daymetData.data[climateVariable];
+
+  const ydayText =
+    //daymetData === null ? "Loading..." : daymetData.data[climateVariable][0];
+    daymetData === null ? "Loading" : daymetData.data["yday"];
+
+  console.log("climateText", { climateText });
+  console.log("ydayText", { ydayText });
 
   function avgClimate(array) {
     var weather = 0;
@@ -63,9 +75,17 @@ export default function Document() {
           coordinates={coordinates}
           setCoordinates={setCoordinates}
         />
+        <LineChart
+          climateText={climateText}
+          ydayText={ydayText}
+          coordinates={coordinates}
+          climateVariable={climateVariable}
+          startDate={startDate}
+          endDate={endDate}
+        />
 
         <>
-          <h3>{`The ${climateVariable} is`}</h3>
+          <h3>{`The Average ${climateVariable} from '${startDate}' to '${endDate}' is`}</h3>
           <h3>{text}</h3>
         </>
       </main>
