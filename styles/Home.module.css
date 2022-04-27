@@ -1,14 +1,16 @@
 .container {
-  min-height: 100vh;
+  min-height: 100%;
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: left;
   margin-left: 20px;
   align-items: left;
-  height: 100vh;
+  height: 100%;
 }
-
+.displayrow {
+  flex-direction: row;
+}
 .main {
   padding: 1rem 0;
   flex: 1;

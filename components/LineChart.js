@@ -65,12 +65,6 @@ export const LineChart = (props) => {
   const data = {
     labels,
     datasets: [
-      // {
-      //   label: "Dataset 1",
-      //   data: [1, 2, 3],
-      //   borderColor: "rgb(255, 99, 132)",
-      //   backgroundColor: "rgba(255, 99, 132, 0.5)",
-      // },
       {
         label: climateVariable,
         data: climateText,
@@ -79,9 +73,9 @@ export const LineChart = (props) => {
       },
     ],
   };
-  console.log("props", { props });
+  //console.log("props", { props });
   return (
-    <div>
+    <div id="chart">
       <Line options={options} data={data} height={400} width={600} />
     </div>
   );

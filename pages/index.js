@@ -60,30 +60,31 @@ export default function Document() {
       </header>
 
       <main className={styles.main}>
-        <FormComponent
-          coordinates={coordinates}
-          setCoordinates={setCoordinates}
-          climateVariable={climateVariable}
-          setClimateVariable={setClimateVariable}
-          startDate={startDate}
-          setStartDate={setStartDate}
-          endDate={endDate}
-          setEndDate={setEndDate}
-        />
-
-        <MapComponent
-          coordinates={coordinates}
-          setCoordinates={setCoordinates}
-        />
-        <LineChart
-          climateText={climateText}
-          ydayText={ydayText}
-          coordinates={coordinates}
-          climateVariable={climateVariable}
-          startDate={startDate}
-          endDate={endDate}
-        />
-
+        <div class="displayrow">
+          <FormComponent
+            coordinates={coordinates}
+            setCoordinates={setCoordinates}
+            climateVariable={climateVariable}
+            setClimateVariable={setClimateVariable}
+            startDate={startDate}
+            setStartDate={setStartDate}
+            endDate={endDate}
+            setEndDate={setEndDate}
+          />
+          <p>Here</p>
+          <MapComponent
+            coordinates={coordinates}
+            setCoordinates={setCoordinates}
+          />
+          <LineChart
+            climateText={climateText}
+            ydayText={ydayText}
+            coordinates={coordinates}
+            climateVariable={climateVariable}
+            startDate={startDate}
+            endDate={endDate}
+          />
+        </div>
         <>
           <h3>{`The Average ${climateVariable} from '${startDate}' to '${endDate}' is`}</h3>
           <h3>{text}</h3>

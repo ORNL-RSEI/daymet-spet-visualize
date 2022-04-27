@@ -16,16 +16,33 @@ a {
 }
 #map {
   width: 650px;
+  height: 400px;
+  float: left;
+  margin-left: 375px;
+}
+#chart {
+  width: 650px;
   height: 500px;
   float: left;
   margin-left: 320px;
 }
 #form {
   width: 350px;
-  height: 200px;
+  height: 500px;
   float: left;
   border-width: 5pt;
   margin: 10px;
+}
+#displaytext {
+  width: 300px;
+  height: 100px;
+  float: left;
+  font-weight: bold;
+  border-width: 5pt;
+  margin: 10px;
+}
+#displayrow {
+  flex-direction: row;
 }
 #button1 {
   background-color: #180861; /* Green */
