@@ -22,14 +22,12 @@ ChartJS.register(
 );
 
 export const LineChart = (props) => {
-  const {
-    climateText,
-    ydayText,
-    coordinates,
-    climateVariable,
-    startDate,
-    endDate,
-  } = props;
+  const { daymetData, climateVariable } = props;
+
+  const dataset = daymetData === null ? null : daymetData.data[climateVariable];
+
+  const labels =
+    daymetData === null ? [1, 2, 3, 4, 5, 6] : daymetData.data["yday"];
 
   const options = {
     responsive: true,
@@ -60,23 +58,20 @@ export const LineChart = (props) => {
     },
   };
 
-  const labels = ydayText;
-
   const data = {
     labels,
     datasets: [
       {
         label: climateVariable,
-        data: climateText,
+        data: dataset,
         borderColor: "rgb(53, 162, 235)",
         backgroundColor: "rgba(53, 162, 235, 0.5)",
       },
     ],
   };
-  //console.log("props", { props });
   return (
     <div id="chart">
-      <Line options={options} data={data} height={400} width={600} />
+      <Line options={options} data={data} />
     </div>
   );
 };

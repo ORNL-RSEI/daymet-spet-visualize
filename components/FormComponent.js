@@ -1,13 +1,22 @@
-import styles from "../styles/Home.module.css";
 import { useState, useEffect } from "react";
 
 export const FormComponent = (props) => {
+  const {
+    coordinates,
+    setCoordinates,
+    climateVariable,
+    setClimateVariable,
+    setEndDate,
+    endDate,
+    startDate,
+    setStartDate,
+  } = props;
   const [formCoordinates, setFormCoordinates] = useState({ lat: "", lng: "" });
 
   useEffect(() => {
-    if (props.coordinates.lat === null) return;
-    setFormCoordinates(props.coordinates);
-  }, [props.coordinates]);
+    if (coordinates.lat === null) return;
+    setFormCoordinates(coordinates);
+  }, [coordinates]);
 
   function onSubmit(event) {
     event.preventDefault();
@@ -15,11 +24,11 @@ export const FormComponent = (props) => {
       lat: formCoordinates.lat,
       lng: formCoordinates.lng,
     };
-    props.setCoordinates(newCoordinates);
+    setCoordinates(newCoordinates);
   }
 
   return (
-    <form onSubmit={onSubmit} className={styles.form}>
+    <form onSubmit={onSubmit}>
       <div id="form">
         <label htmlFor="lat">Latitude</label>
         <br></br>
@@ -59,9 +68,9 @@ export const FormComponent = (props) => {
         <select
           id="climateVariable"
           name="climateVariable"
-          value={props.climateVariable}
+          value={climateVariable}
           onChange={(e) => {
-            props.setClimateVariable(e.target.value);
+            setClimateVariable(e.target.value);
           }}
         >
           <option value="dayl (s)">Duration of the Daylight </option>
@@ -84,9 +93,9 @@ export const FormComponent = (props) => {
           name="startDate"
           min="1990-01-01"
           max="2000-01-01"
-          value={props.startDate}
+          value={startDate}
           onChange={(e) => {
-            props.setStartDate(e.target.value);
+            setStartDate(e.target.value);
           }}
         ></input>
         <br></br>
@@ -100,9 +109,9 @@ export const FormComponent = (props) => {
           name="endDate"
           min="1990-01-01"
           max="2000-01-01"
-          value={props.endDate}
+          value={endDate}
           onChange={(e) => {
-            props.setEndDate(e.target.value);
+            setEndDate(e.target.value);
           }}
         ></input>
 
